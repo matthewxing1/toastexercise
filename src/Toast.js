@@ -6,14 +6,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function Toast({email, firstName, lastName}) {
+export default function Toast({form}) {
   const [open, setOpen] = useState(true);
 
+  //close sidebar upon hitting X
   const handleClose = () => {
     setOpen(false);
   };
 
+  //submit form upon hitting "like" button
   const handleLike = () => {
+
   }
 
   const action = (
@@ -33,8 +36,8 @@ export default function Toast({email, firstName, lastName}) {
       <Snackbar open={open} 
           message={
           <div>
-            <Typography>{`${firstName} ${lastName}`}</Typography>
-            <Typography>{email}</Typography>
+            <Typography>{`${form.data.firstName} ${form.datalastName}`}</Typography>
+            <Typography>{form.data.email}</Typography>
           </div>}
         autoHideDuration={6000}
         onClose={handleClose}

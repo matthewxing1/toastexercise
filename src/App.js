@@ -26,7 +26,7 @@ function App() {
       <Header />
       <Container>
         <Content />
-        {tempFormData.map((form) => <Toast key={form.id} email={form.data.email} firstName={form.data.firstName} lastName={form.data.lastName} />)}
+        {tempFormData.map((form) => <Toast key={form.id} form={form} />)}
       </Container>
     </>
   );
