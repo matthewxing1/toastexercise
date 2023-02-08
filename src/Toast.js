@@ -5,10 +5,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import ToastErr from './ToastErr';
 import { saveLikedFormSubmission, fetchLikedFormSubmissions } from './service/mockServer';
 
 export default function Toast({form}) {
   const [open, setOpen] = useState(true);
+  const [toastErr, setToastErr] = useState([]);
 
   //close sidebar upon hitting X
   const handleClose = () => {
@@ -21,11 +23,13 @@ export default function Toast({form}) {
       //close toast to prevent saving the same form multiple times
       handleClose();
       //save form to database
-      saveLikedFormSubmission(form);
+      await saveLikedFormSubmission(form);
     }
     catch(err){
-      //create a toast upon error (todo)
+      console.log('oh no an error')
       console.log(err)
+      //create a toast upon error
+      setToastErr([err])
     }
   }
 
@@ -54,6 +58,7 @@ export default function Toast({form}) {
         action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       />
+      {toastErr.map((error) => <ToastErr error={error}/>)}
     </Box>
   );
 }
