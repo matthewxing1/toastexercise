@@ -26,10 +26,8 @@ export default function Toast({form}) {
       await saveLikedFormSubmission(form);
     }
     catch(err){
-      console.log('oh no an error')
-      console.log(err)
       //create a toast upon error
-      setToastErr([err])
+      setToastErr([err]);
     }
   }
 
