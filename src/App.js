@@ -22,7 +22,7 @@ function App() {
       <Header />
       <Container>
         <Content allForms={allForms} setAllForms={setAllForms}/>
-        {formData.map((form) => <Toast key={form.id} form={form} />)}
+        {formData.map((form) => <Toast key={form.id} form={form} setAllForms={setAllForms}/>)}
       </Container>
     </>
   );
