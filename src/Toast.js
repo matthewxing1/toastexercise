@@ -6,9 +6,9 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ToastErr from './ToastErr';
-import { saveLikedFormSubmission, fetchLikedFormSubmissions, setAllForms } from './service/mockServer';
+import { saveLikedFormSubmission, fetchLikedFormSubmissions } from './service/mockServer';
 
-export default function Toast({form}) {
+export default function Toast({form, setAllForms}) {
   const [open, setOpen] = useState(true);
   const [toastErr, setToastErr] = useState([]);
 
