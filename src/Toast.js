@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ToastErr from './ToastErr';
-import { saveLikedFormSubmission, fetchLikedFormSubmissions } from './service/mockServer';
+import { saveLikedFormSubmission, fetchLikedFormSubmissions, setAllForms } from './service/mockServer';
 
 export default function Toast({form}) {
   const [open, setOpen] = useState(true);
@@ -24,6 +24,9 @@ export default function Toast({form}) {
       handleClose();
       //save form to database
       await saveLikedFormSubmission(form);
+      //update state to showcase updated table of forms
+      const data = await fetchLikedFormSubmissions();
+      setAllForms(data.formSubmissions);
     }
     catch(err){
       //create a toast upon error
@@ -56,7 +59,7 @@ export default function Toast({form}) {
         action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       />
-      {toastErr.map((error) => <ToastErr error={error}/>)}
+      {toastErr.map((error, key) => <ToastErr key={key} error={error}/>)}
     </Box>
   );
 }
