@@ -17,6 +17,16 @@ export default function Toast({form}) {
 
   //submit form upon hitting "like" button
   const handleLike = async () => {
+    try{
+      //close toast to prevent saving the same form multiple times
+      handleClose();
+      //save form to database
+      saveLikedFormSubmission(form);
+    }
+    catch(err){
+      //create a toast upon error (todo)
+      console.log(err)
+    }
   }
 
   const action = (
