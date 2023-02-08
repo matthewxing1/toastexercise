@@ -7,15 +7,11 @@ import { onMessage } from './service/mockServer';
 import Toast from './Toast';
 
 function App() {
-  const [tempFormData, setTempFormData] = useState([]);
+  const [formData, setFormData] = useState([]);
 
   function submitForm(form){
     //store data temporarily in state
-    setTempFormData([...tempFormData, form]);
-    // delete form after 6 seconds
-    setTimeout(() => {
-      setTempFormData(tempFormData.slice(1));
-    }, 6000);
+    setFormData([form]);
   }
   
   onMessage(submitForm);
@@ -26,7 +22,7 @@ function App() {
       <Header />
       <Container>
         <Content />
-        {tempFormData.map((form) => <Toast key={form.id} form={form} />)}
+        {formData.map((form) => <Toast key={form.id} form={form} />)}
       </Container>
     </>
   );
