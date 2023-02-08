@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { saveLikedFormSubmission, fetchLikedFormSubmissions } from './service/mockServer';
 
 export default function Toast({form}) {
   const [open, setOpen] = useState(true);
@@ -15,8 +16,7 @@ export default function Toast({form}) {
   };
 
   //submit form upon hitting "like" button
-  const handleLike = () => {
-
+  const handleLike = async () => {
   }
 
   const action = (
@@ -36,7 +36,7 @@ export default function Toast({form}) {
       <Snackbar open={open} 
           message={
           <div>
-            <Typography>{`${form.data.firstName} ${form.datalastName}`}</Typography>
+            <Typography>{`${form.data.firstName} ${form.data.lastName}`}</Typography>
             <Typography>{form.data.email}</Typography>
           </div>}
         autoHideDuration={6000}
