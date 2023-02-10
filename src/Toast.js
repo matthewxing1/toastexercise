@@ -5,12 +5,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import ToastErr from './ToastErr';
 import { saveLikedFormSubmission, fetchLikedFormSubmissions } from './service/mockServer';
 
-export default function Toast({form, setAllForms}) {
+export default function Toast({form, setAllForms, setToastErr}) {
   const [open, setOpen] = useState(true);
-  const [toastErr, setToastErr] = useState([]);
 
   //close sidebar upon hitting X
   const handleClose = () => {
@@ -59,7 +57,6 @@ export default function Toast({form, setAllForms}) {
         action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       />
-      {toastErr.map((error, key) => <ToastErr key={key} error={error}/>)}
     </Box>
   );
 }

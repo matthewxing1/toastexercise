@@ -4,10 +4,12 @@ import Header from './Header';
 import Content from './Content';
 import { onMessage, fetchLikedFormSubmissions } from './service/mockServer';
 import Toast from './Toast';
+import ToastErr from './ToastErr';
 
 function App() {
   const [formData, setFormData] = useState([]);
   const [allForms, setAllForms] = useState([]);
+  const [toastErr, setToastErr] = useState([]);
 
   function submitForm(form){
     //store data temporarily in state
@@ -37,7 +39,8 @@ function App() {
       <Header fetchForms={fetchForms}/>
       <Container>
         <Content allForms={allForms}/>
-        {formData.map((form) => <Toast key={form.id} form={form} setAllForms={setAllForms}/>)}
+        {formData.map((form) => <Toast key={form.id} form={form} setAllForms={setAllForms} setToastErr={setToastErr}/>)}
+        {toastErr.map((error, key) => <ToastErr key={key} error={error}/>)}
       </Container>
     </>
   );
