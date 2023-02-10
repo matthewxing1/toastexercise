@@ -23,7 +23,7 @@ function App() {
       setAllForms(data.formSubmissions);
     }
     catch(err){
-      // setToastErr([err]);
+      setToastErr([err]);
     }
   }
 
@@ -31,7 +31,6 @@ function App() {
     onMessage(submitForm);
     fetchForms();
   }, [])
-  
 
   //map over data, creating a new Toast for each form submitted
   return (
