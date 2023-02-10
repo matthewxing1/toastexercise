@@ -2,7 +2,6 @@ import React from 'react';
 import {Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper} from '@mui/material';
 
 export default function FormsTable({data}) {
-  console.log(data);
   return (
     <TableContainer component={Paper}>
         <Table aria-label='simple table'>
