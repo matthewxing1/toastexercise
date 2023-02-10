@@ -34,7 +34,7 @@ function App() {
   //map over data, creating a new Toast for each form submitted
   return (
     <>
-      <Header />
+      <Header fetchForms={fetchForms}/>
       <Container>
         <Content allForms={allForms}/>
         {formData.map((form) => <Toast key={form.id} form={form} setAllForms={setAllForms}/>)}
